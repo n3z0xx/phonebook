@@ -1,0 +1,45 @@
+<div class="content" *ngIf="contact">
+  <div class="head">
+    <tui-avatar text="{{contact.name}}"
+                size="xl"
+                [rounded] = true
+    ></tui-avatar>
+    <h1 class="name">{{contact.name}}</h1>
+    <a (click)="copyToClipboard()">
+      <span class="number tui-text_body-l">
+      {{contact.number}}
+        <tui-tooltip direction="right"
+                     content="click to copy the number"
+        ></tui-tooltip>
+      </span>
+    </a>
+  </div>
+  <div class="tag-list">
+    <tui-tag
+      *ngFor="let tag of contact.groups.split(',')"
+      [value]="tag"
+      [autoColor]="true"
+    ></tui-tag>
+  </div>
+  <div class="info">
+    <tui-action icon="tuiIconCompanyLarge" class="action">
+      <div class="action-inner">
+        <div class="tui-text_body-m" style="color: var(--tui-text-02)">Company:</div>
+        <div>{{contact.company}}, {{contact.jobTitle}}</div>
+      </div>
+    </tui-action>
+    <a href="mailto:{{contact.email}}">
+      <tui-action icon="tuiIconMailLarge" class="action" tuiHint="click to open mail app">
+        <div class="tui-text_body-m" style="color: var(--tui-text-02)">@mail:</div>
+          {{contact.email}}
+      </tui-action>
+    </a>
+    <div tuiGroup class="btn-box" [collapsed]="true">
+      <button tuiButton type="button" appearance="secondary" (click)="copyToClipboard()">copy number</button>
+      <a tuiButton type="button" appearance="accent" href="tel:{{contact.number}}">call</a>
+    </div>
+  </div>
+</div>
+<div class="content" *ngIf="!contact">
+  <h1>Error occurred while loading contact info</h1>
+</div>

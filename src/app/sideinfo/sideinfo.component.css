@@ -1,0 +1,62 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 400px;
+  margin-top: 30%;
+  gap: 10px;
+}
+
+.tag-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.name {
+  margin-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.number {
+  color: var(--tui-text-02);
+}
+
+.action {
+  flex: 1;
+  align-items: center;
+}
+
+.badge-family {
+  background-color: var(--tui-support-02);
+}
+
+.badge-friend {
+  background-color: var(--tui-support-03);
+}
+
+.badge-classmate {
+  background-color: var(--tui-support-04);
+}
+
+.badge-work {
+  background-color: var(--tui-support-05);
+}

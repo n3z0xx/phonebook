@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="search">
+    <form [formGroup]="searchForm">
+      <tui-input
+        formControlName="search"
+        [tuiTextfieldCleaner]="true"
+        tuiTextfieldSize="l"
+      >
+        search
+        <input type="text" tuiTextfield (keyup)="updateSearch()">
+      </tui-input>
+      <tui-filter (change)="updateSearch()"
+        formControlName="groupFilter"
+        size="m"
+        [items]="groups"
+      ></tui-filter>
+    </form>
+  </div>
+  <tui-island>
+    <table
+      tuiTable
+      [columns]="columns"
+    >
+      <thead>
+        <tr tuiThGroup>
+          <th *tuiHead="'photo'" tuiTh>
+            Photo
+          </th>
+          <th *tuiHead="'name'" tuiTh>
+            Name
+          </th>
+          <th *tuiHead="'groups'" tuiTh>
+            Groups
+          </th>
+          <th *tuiHead="'number'" tuiTh>
+            Number
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        tuiTbody
+        [data]="contacts"
+      >
+        <tr *tuiRow="let contact of contacts; let i = index"
+            tuiTr
+            (click)="selectContact(contact)"
+        >
+          <td
+            *tuiCell="'photo'"
+            tuiTd
+          >
+            <tui-avatar text="{{contact.name}}"
+                        size="s"
+                        [rounded] = true
+            ></tui-avatar>
+          </td>
+          <td
+            *tuiCell="'name'"
+            tuiTd
+          >
+            {{contact.name}}
+          </td>
+          <td
+            *tuiCell="'number'"
+            tuiTd
+          >
+            {{contact.number}}
+          </td>
+          <td
+            *tuiCell="'groups'"
+            tuiTd
+          >
+            <div class="tag-list">
+              <tui-tag
+                *ngFor="let tag of contact.groups.split(',')"
+                [value]="tag"
+                [autoColor]="true"
+              ></tui-tag>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <tui-pagination
+      [length]="length"
+      [index]="index"
+      (indexChange)="goToPage($event)"
+      class="tui-space_top-2"
+    ></tui-pagination>
+  </tui-island>
+</div>

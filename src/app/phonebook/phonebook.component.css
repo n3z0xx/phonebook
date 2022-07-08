@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  gap: 10px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.search > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search > tui-input {
+  width: 100%;
+}
+
+/* Table styles */
+tui-avatar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tui-island {
+  padding: 1px;
+}
+
+.tag-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+td, th {
+  border-color: transparent;
+  border-right-color: var(--tui-base-04);
+  text-align: center;
+  vertical-align: middle;
+}
+td:last-child, th:last-child {
+  border-right-color: transparent;
+}
+tbody {
+  border-color: transparent;
+}
+tr:nth-child(even) td {
+  background: var(--tui-base-02);
+}
+.alive, .deceased {
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+.alive:before, .deceased:before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+  background: var(--tui-base-04);
+}
+.alive:before {
+  background: var(--tui-success-fill);
+}
+.remove {
+  opacity: 0;
+}
+tr:hover .remove, tr:focus-within .remove {
+  opacity: 1;
+}
